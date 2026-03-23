@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<title>FACADE FIELD TRIP — Shanghai</title>
+<style>
+:root{--bg:#09090e;--sur:#111118;--card:#181824;--brd:#252535;--acc:#c8a96e;--a2:#7b9cce;--txt:#e6e6ef;--dim:#6a6a8a;--r:11px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:99;height:54px;background:rgba(9,9,14,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+.logo{font-size:11px;letter-spacing:4px;color:var(--acc);font-weight:800;}.logo b{color:var(--dim);}
+.ntabs{display:flex;gap:2px;}
+.nt{padding:5px 14px;border-radius:6px;font-size:10px;letter-spacing:2px;cursor:pointer;color:var(--dim);border:none;background:none;transition:.2s;}
+.nt.on{background:var(--acc);color:#09090e;font-weight:800;}.nt:hover:not(.on){color:var(--txt);background:var(--brd);}
+.navr{display:flex;gap:8px;align-items:center;}
+.cpill{padding:3px 12px;border-radius:20px;font-size:10px;letter-spacing:2px;background:var(--card);border:1px solid var(--acc);color:var(--acc);}
+.sheety-badge{padding:3px 10px;border-radius:20px;font-size:9px;letter-spacing:1.5px;display:flex;align-items:center;gap:5px;cursor:pointer;border:none;}
+.sheety-badge.live{background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.35);color:#6dc87a;}
+.sheety-badge.loading{background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.35);color:var(--acc);}
+.sheety-badge.error{background:rgba(200,80,80,.1);border:1px solid rgba(200,80,80,.35);color:#e07070;}
+.sheety-dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+.sheety-dot.pulse{animation:pulse 1.4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+/* ── PAGES ── */
+.pg{display:none;padding:70px 24px 48px;max-width:1240px;margin:0 auto;}.pg.on{display:block;}#ph{padding:0;}
+
+/* ── HERO ── */
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse at 25% 55%,rgba(200,169,110,.07),transparent 55%),radial-gradient(ellipse at 75% 30%,rgba(123,156,206,.06),transparent 55%);}
+.hgrid{position:absolute;inset:0;opacity:.03;background:linear-gradient(var(--brd) 1px,transparent 1px),linear-gradient(90deg,var(--brd) 1px,transparent 1px);background-size:56px 56px;}
+.hc{position:relative;z-index:1;}
+.hk{font-size:9px;letter-spacing:5px;color:var(--acc);margin-bottom:16px;}
+.ht{font-size:clamp(40px,7vw,82px);font-weight:800;letter-spacing:-2px;line-height:1.0;}.ht em{color:var(--acc);font-style:normal;}
+.hbadge{display:inline-block;margin:18px auto 0;padding:5px 18px;border-radius:20px;font-size:9px;letter-spacing:4px;background:rgba(200,169,110,.07);border:1px solid rgba(200,169,110,.25);color:var(--acc);}
+.hsub{font-size:13px;color:var(--dim);margin:22px auto 32px;line-height:1.75;max-width:420px;}
+.hbtns{display:flex;gap:10px;justify-content:center;}
+.bp{padding:11px 28px;border-radius:8px;font-size:11px;letter-spacing:2px;background:var(--acc);color:#09090e;border:none;cursor:pointer;font-weight:800;}
+.bo{padding:11px 28px;border-radius:8px;font-size:11px;letter-spacing:2px;background:transparent;color:var(--acc);border:1px solid rgba(200,169,110,.4);cursor:pointer;}
+.hstats{display:flex;gap:44px;margin-top:60px;}
+.hsn{font-size:30px;font-weight:800;color:var(--acc);}.hsl{font-size:9px;letter-spacing:3px;color:var(--dim);margin-top:3px;}
+
+/* ── SECTION HEADER ── */
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--brd);}
+.sht{font-size:9px;letter-spacing:4px;color:var(--acc);font-weight:800;}.shs{font-size:10px;color:var(--dim);}
+
+/* ── FILTER BAR ── */
+.fbar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
+.fc{padding:4px 12px;border-radius:20px;font-size:9px;letter-spacing:2px;cursor:pointer;border:1px solid var(--brd);color:var(--dim);background:none;transition:.2s;}
+.fc.on{border-color:var(--acc);color:var(--acc);background:rgba(200,169,110,.06);}.fc:hover:not(.on){color:var(--txt);}
+.sb{margin-left:auto;padding:5px 14px;border-radius:20px;font-size:11px;background:var(--card);border:1px solid var(--brd);color:var(--txt);width:200px;outline:none;}.sb:focus{border-color:var(--acc);}
+
+/* ── CARDS ── */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+.cc{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--brd);cursor:pointer;transition:.2s;}
+.cc:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.45);}
+.ci{height:190px;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#000;position:relative;}
+.citag{position:absolute;top:9px;left:9px;padding:2px 9px;border-radius:20px;font-size:8px;letter-spacing:2px;font-weight:800;background:rgba(200,169,110,.92);color:#09090e;}
+.ciyr{position:absolute;top:9px;right:9px;padding:2px 9px;border-radius:20px;font-size:8px;background:rgba(0,0,0,.65);color:var(--dim);}
+/* Cloudinary image count badge */
+.ci-count{position:absolute;bottom:9px;right:9px;padding:2px 8px;border-radius:20px;font-size:8px;background:rgba(0,0,0,.7);color:var(--acc);display:none;}
+.ci-count.show{display:block;}
+.cb{padding:14px;}.ca{font-size:8px;letter-spacing:3px;color:var(--acc);margin-bottom:4px;}
+.cn{font-size:15px;font-weight:700;margin-bottom:3px;}.cl{font-size:10px;color:var(--dim);margin-bottom:10px;}
+.ctags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px;}
+.ct{padding:2px 7px;border-radius:3px;font-size:8px;background:#1c1c28;color:var(--dim);border:1px solid var(--brd);}
+.ct.m{color:var(--a2);border-color:rgba(123,156,206,.2);}
+.cmeta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;padding-top:10px;border-top:1px solid var(--brd);}
+.cmk{font-size:7px;letter-spacing:2px;color:var(--dim);margin-bottom:2px;}.cmv{font-size:10px;font-weight:600;}
+
+/* ── SKELETON ── */
+.skeleton{background:linear-gradient(90deg,var(--card) 25%,var(--brd) 50%,var(--card) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.skel-card{height:290px;border-radius:var(--r);border:1px solid var(--brd);}
+
+/* ── ERROR / EMPTY ── */
+.err-box{background:rgba(200,80,80,.06);border:1px solid rgba(200,80,80,.25);border-radius:10px;padding:24px 28px;text-align:center;}
+.err-title{font-size:14px;font-weight:700;color:#e07070;margin-bottom:8px;}
+.err-msg{font-size:11px;color:var(--dim);line-height:1.7;margin-bottom:14px;}
+.err-btn{padding:7px 18px;border-radius:6px;background:var(--acc);color:#09090e;border:none;cursor:pointer;font-size:10px;letter-spacing:1.5px;font-weight:800;}
+
+/* ── MODAL ── */
+.mbg{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);overflow-y:auto;}
+.mbg.on{display:block;}
+.modal{background:var(--sur);border-radius:18px;border:1px solid var(--brd);width:calc(100% - 40px);max-width:960px;margin:28px auto 60px;overflow:hidden;}
+.mh{height:320px;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#000;position:relative;}
+.mhg{position:absolute;inset:0;background:linear-gradient(to top,var(--sur) 0%,transparent 60%);}
+.mcls{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.1);color:var(--txt);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.mbdg{position:absolute;top:14px;left:14px;padding:3px 10px;border-radius:20px;font-size:8px;letter-spacing:2px;font-weight:800;background:var(--acc);color:#09090e;}
+.mbody{padding:2px 26px 26px;}
+.mk{font-size:9px;letter-spacing:3px;color:var(--acc);margin-bottom:5px;}
+.mtt{font-size:25px;font-weight:800;margin-bottom:3px;line-height:1.1;}
+.msub{font-size:12px;color:var(--dim);margin-bottom:18px;}
+.mtabs{display:flex;border-bottom:1px solid var(--brd);margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.mtab{padding:9px 16px;font-size:10px;letter-spacing:1.5px;cursor:pointer;color:var(--dim);border:none;background:none;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;flex-shrink:0;}
+.mtab.on{color:var(--acc);border-bottom-color:var(--acc);}
+.mpane{display:none;}.mpane.on{display:block;}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;margin-bottom:20px;}
+.sp{background:var(--card);border-radius:7px;padding:11px 13px;border:1px solid var(--brd);}
+.spk{font-size:7px;letter-spacing:2.5px;color:var(--dim);margin-bottom:4px;}.spv{font-size:13px;font-weight:700;}
+.spv small{font-size:9px;font-weight:400;color:var(--dim);}
+.fst{font-size:9px;letter-spacing:3px;color:var(--acc);margin-bottom:9px;margin-top:16px;}
+.fd{font-size:12px;line-height:1.8;color:rgba(230,230,239,.72);margin-bottom:16px;}
+.fflist{display:flex;flex-direction:column;gap:7px;margin-bottom:4px;}
+.ff{display:flex;gap:11px;background:var(--card);border-radius:7px;padding:11px 13px;border:1px solid var(--brd);}
+.ffi{font-size:17px;flex-shrink:0;}.fft{font-size:11px;font-weight:700;margin-bottom:2px;}.ffd{font-size:10px;color:var(--dim);line-height:1.5;}
+.clist{display:flex;flex-direction:column;gap:7px;}
+.citem{display:flex;justify-content:space-between;align-items:center;background:var(--card);border-radius:7px;padding:11px 14px;border:1px solid var(--brd);gap:10px;}
+.cin{font-size:12px;font-weight:700;}.cir{font-size:8px;letter-spacing:2px;color:var(--acc);white-space:nowrap;}.cic{font-size:10px;color:var(--dim);}
+.mlink{padding:7px 16px;border-radius:6px;font-size:10px;letter-spacing:1.5px;border:1px solid var(--brd);background:var(--card);color:var(--txt);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:.2s;margin:0 4px 4px 0;}
+.mlink:hover{border-color:var(--acc);color:var(--acc);}
+.mapbox{height:200px;border-radius:9px;background:var(--card);border:1px solid var(--brd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--dim);}
+
+/* ── GALLERY TAB ── */
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:8px;}
+@media(min-width:600px){.gal-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:900px){.gal-grid{grid-template-columns:repeat(4,1fr);}}
+.gal-item{aspect-ratio:4/3;border-radius:6px;overflow:hidden;cursor:pointer;position:relative;background:#000;border:1px solid #1a1a1a;}
+.gal-item img{width:100%;height:100%;object-fit:contain;display:block;background:#000;transition:opacity .3s;}
+.gal-item img.blur-up{filter:blur(8px);transform:scale(1.02);}
+.gal-item img.loaded{filter:none;transform:scale(1);}
+.gal-item:active .gal-overlay{opacity:1;}
+@media(hover:hover){.gal-item:hover .gal-overlay{opacity:1;}.gal-item:hover img{opacity:.85;}}
+.gal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4);opacity:0;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.gal-zoom{font-size:22px;}
+/* Loading state for gallery */
+.gal-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px;gap:12px;color:var(--dim);}
+.gal-spinner{width:28px;height:28px;border:2px solid var(--brd);border-top-color:var(--acc);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.gal-empty{text-align:center;padding:48px;color:var(--dim);}
+.gal-empty-icon{font-size:40px;margin-bottom:12px;}
+.gal-folder{font-size:9px;letter-spacing:2px;color:var(--dim);margin-top:12px;padding:6px 12px;background:var(--card);border-radius:5px;border:1px solid var(--brd);display:inline-block;}
+
+/* Gallery lightbox */
+.lbx{display:none;position:fixed;inset:0;z-index:300;background:#000;flex-direction:column;align-items:center;justify-content:center;touch-action:none;overscroll-behavior:none;}
+.lbx.on{display:flex;}
+.lbx-img-wrap{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;}
+.lbx-img{width:100vw;height:100vh;object-fit:contain;display:block;background:#000;transition:opacity .2s;transform-origin:center center;will-change:transform;}
+.lbx-img.loading{opacity:0;}
+/* 블러 플레이스홀더 */
+.lbx-blur{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:blur(20px);transform:scale(1.08);opacity:1;transition:opacity .3s;background:#000;}
+.lbx-blur.hide{opacity:0;pointer-events:none;}
+.lbx-cls{position:fixed;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;}
+.lbx-prev,.lbx-next{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;}
+.lbx-prev{left:8px;}.lbx-next{right:8px;}
+.lbx-info{position:fixed;bottom:20px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.4);}
+/* 스와이프 힌트 */
+@media(pointer:coarse){.lbx-prev,.lbx-next{opacity:.4;}}
+
+/* ── CONFIG PAGE ── */
+.cfg-box{background:linear-gradient(135deg,rgba(200,169,110,.06),rgba(123,156,206,.06));border:1px solid rgba(200,169,110,.3);border-radius:12px;padding:22px 26px;margin-bottom:20px;}
+.cfg-title{font-size:9px;letter-spacing:4px;color:var(--acc);font-weight:800;margin-bottom:14px;}
+.cfg-row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+.cfg-field{flex:1;min-width:200px;}
+.cfg-label{font-size:8px;letter-spacing:2px;color:var(--dim);margin-bottom:5px;display:block;}
+.cfg-input{width:100%;padding:7px 11px;border-radius:5px;font-size:11px;background:var(--card);border:1px solid var(--brd);color:var(--txt);outline:none;}.cfg-input:focus{border-color:var(--acc);}
+.cfg-btn{padding:8px 18px;border-radius:5px;background:var(--acc);color:#09090e;border:none;cursor:pointer;font-size:10px;letter-spacing:1.5px;font-weight:800;white-space:nowrap;}
+.cfg-hint{font-size:9px;color:var(--dim);margin-top:10px;line-height:1.8;}
+.cfg-hint code{background:var(--card);padding:1px 5px;border-radius:3px;font-size:9px;color:var(--acc);}
+
+/* ── MAP ── */
+.mpgcard{background:var(--card);border-radius:var(--r);border:1px solid var(--brd);overflow:hidden;}
+.mpghdr{padding:18px 22px;border-bottom:1px solid var(--brd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.membed{height:260px;background:linear-gradient(135deg,#0e0e1c,#181828);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.mmb{padding:9px 22px;border-radius:7px;font-size:11px;letter-spacing:2px;background:var(--acc);color:#09090e;border:none;cursor:pointer;font-weight:800;text-decoration:none;display:inline-block;}
+.mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:7px;padding:14px 18px;}
+.mpin{background:var(--sur);border-radius:7px;padding:9px 12px;border:1px solid var(--brd);cursor:pointer;transition:.2s;display:flex;gap:9px;align-items:center;}
+.mpin:hover{border-color:var(--acc);}
+.mpinn{font-size:18px;font-weight:800;color:var(--acc);min-width:28px;}.mpinn2{font-size:10px;font-weight:700;}.mpinaddr{font-size:9px;color:var(--dim);}
+
+/* ── MOBILE ── */
+.mobile-nav{display:none;}
+@media(max-width:768px){
+  nav{padding:0 16px;}.ntabs{display:none;}
+  .pg{padding:70px 16px 80px;}#ph{padding:0 0 80px 0;}
+  .hero{height:calc(100vh - 56px);margin:56px 0 0;}
+  .ht{font-size:clamp(32px,10vw,48px);}
+  .cgrid{grid-template-columns:1fr;}
+  .fbar .sb{width:100%;margin-left:0;margin-top:8px;}
+  .mbg{padding:0;}.modal{width:100%;max-width:100%;margin:0;border-radius:0;min-height:100vh;}
+  .mh{height:240px;}.mbody{padding:0 16px 24px;}
+  .mtab{padding:8px 12px;font-size:9px;}
+  .gal-grid{grid-template-columns:repeat(2,1fr);}
+  .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;height:60px;background:rgba(9,9,14,.98);border-top:1px solid var(--brd);z-index:99;justify-content:space-around;align-items:center;padding:0 8px;}
+  .mnav{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px;border-radius:8px;cursor:pointer;transition:.2s;border:none;background:none;color:var(--dim);}
+  .mnav.on{background:rgba(200,169,110,.12);color:var(--acc);}
+  .mnav-icon{font-size:20px;}.mnav-label{font-size:9px;letter-spacing:1px;font-weight:700;}
+  .cfg-row{flex-direction:column;}
+}
+@media(min-width:769px) and (max-width:1024px){.cgrid{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">FACADE<b> FIELD</b></div>
+  <div class="ntabs">
+    <button class="nt on" onclick="go('h')">HOME</button>
+    <button class="nt" onclick="go('c')">CASES</button>
+    <button class="nt" onclick="go('m')">MAP</button>
+    <button class="nt" onclick="go('s')">DATA</button>
+  </div>
+  <div class="navr">
+    <div class="cpill">📍 SHANGHAI</div>
+    <button id="sheetyStatus" class="sheety-badge loading" onclick="go('s')">
+      <div class="sheety-dot pulse"></div>
+      <span id="sheetyStatusText">CONNECTING…</span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav">
+  <button class="mnav on"  onclick="go('h')"><div class="mnav-icon">🏠</div><div class="mnav-label">HOME</div></button>
+  <button class="mnav"     onclick="go('c')"><div class="mnav-icon">🏗️</div><div class="mnav-label">CASES</div></button>
+  <button class="mnav"     onclick="go('m')"><div class="mnav-icon">🗺️</div><div class="mnav-label">MAP</div></button>
+  <button class="mnav"     onclick="go('s')"><div class="mnav-icon">⚙️</div><div class="mnav-label">DATA</div></button>
+</div>
+
+<!-- HOME -->
+<div id="ph" class="pg on">
+  <div class="hero">
+    <div class="hbg"></div><div class="hgrid"></div>
+    <div class="hc">
+      <div class="hk">FACADE SPECIALIST RESEARCH TOOL</div>
+      <h1 class="ht">FACADE<br><em>FIELD TRIP</em></h1>
+      <div class="hbadge">SHANGHAI · CHINA</div>
+      <p class="hsub">파사드 전문가를 위한 현장 조사 플랫폼.<br>Google Sheets · Sheety · Cloudinary 실시간 연동.</p>
+      <div class="hbtns">
+        <button class="bp" onclick="go('c')">EXPLORE CASES</button>
+        <button class="bo" onclick="go('m')">VIEW MAP</button>
+      </div>
+      <div class="hstats">
+        <div><div class="hsn" id="statBuildings">—</div><div class="hsl">BUILDINGS</div></div>
+        <div><div class="hsn">1</div><div class="hsl">CITY</div></div>
+        <div><div class="hsn" id="statArchitects">—</div><div class="hsl">ARCHITECTS</div></div>
+        <div><div class="hsn" id="statTypes">—</div><div class="hsl">TYPOLOGIES</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASES -->
+<div id="pc" class="pg">
+  <div class="sh"><span class="sht">CASE STUDIES</span><span class="shs" id="ccount">Loading…</span></div>
+  <div class="fbar">
+    <button class="fc on" onclick="ft(this,'all')">ALL</button>
+    <button class="fc" onclick="ft(this,'office')">OFFICE</button>
+    <button class="fc" onclick="ft(this,'cultural')">CULTURAL</button>
+    <button class="fc" onclick="ft(this,'mixed')">MIXED-USE</button>
+    <button class="fc" onclick="ft(this,'retail')">RETAIL</button>
+    <button class="fc" onclick="ft(this,'library')">LIBRARY</button>
+    <button class="fc" onclick="ft(this,'education')">EDUCATION</button>
+    <input class="sb" placeholder="🔍  Search buildings…" oninput="fs(this.value)">
+  </div>
+  <div class="cgrid" id="cgrid">
+    <div class="skel-card skeleton"></div>
+    <div class="skel-card skeleton"></div>
+    <div class="skel-card skeleton"></div>
+    <div class="skel-card skeleton"></div>
+    <div class="skel-card skeleton"></div>
+    <div class="skel-card skeleton"></div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div id="pm" class="pg">
+  <div class="sh"><span class="sht">LOCATION MAP</span><span class="shs" id="mapcount">Shanghai</span></div>
+  <div class="mpgcard">
+    <div class="mpghdr">
+      <div>
+        <div style="font-size:15px;font-weight:800;">SHANGHAI FACADE FIELD TRIP</div>
+        <div style="font-size:10px;color:var(--dim);margin-top:3px;">31.2304° N · 121.4737° E</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a class="mmb" href="https://www.google.com/maps/search/famous+buildings+in+Shanghai/@31.2304,121.4737,13z" target="_blank">🌍 Google Maps ↗</a>
+        <a class="mmb" style="background:var(--card);color:var(--acc);border:1px solid var(--acc);" href="https://map.baidu.com/?latlng=31.2304,121.4737" target="_blank">🇨🇳 百度地图 ↗</a>
+      </div>
+    </div>
+    <div class="membed">
+      <div style="font-size:40px;">🗺️</div>
+      <div style="font-size:11px;color:var(--dim);letter-spacing:1.5px;">SELECT A SITE BELOW TO OPEN IN MAP</div>
+      <div style="font-size:9px;color:var(--acc);letter-spacing:3px;" id="mapSiteCount">LOADING…</div>
+    </div>
+    <div class="mlist" id="maplist"></div>
+  </div>
+</div>
+
+<!-- DATA / CONFIG -->
+<div id="ps" class="pg">
+  <div class="sh"><span class="sht">DATA SOURCE</span><span class="shs">Sheety + Google Sheets + Cloudinary</span></div>
+
+  <div class="cfg-box">
+    <div class="cfg-title">⚙ SHEETY API</div>
+    <div class="cfg-row">
+      <div class="cfg-field">
+        <label class="cfg-label">ENDPOINT URL</label>
+        <input class="cfg-input" id="cfgUrl" placeholder="https://api.sheety.co/YOUR_ID/facadeFieldtrip/buildings"/>
+      </div>
+      <button class="cfg-btn" onclick="saveConfig()">SAVE &amp; RELOAD</button>
+    </div>
+    <div class="cfg-hint">구글 시트명: <code>buildings</code> · Sheety에서 GET 허용 필수</div>
+  </div>
+
+  <div class="cfg-box">
+    <div class="cfg-title">🖼 CLOUDINARY</div>
+    <div class="cfg-row">
+      <div class="cfg-field">
+        <label class="cfg-label">CLOUD NAME</label>
+        <input class="cfg-input" id="cfgCloud" placeholder="da6wmcae7"/>
+      </div>
+      <!-- API Key 불필요 — galleryIds 방식으로 변경 -->
+      <button class="cfg-btn" onclick="saveConfig()">SAVE &amp; RELOAD</button>
+    </div>
+    <div class="cfg-hint">
+      Cloud Name: Cloudinary Dashboard 좌측 상단 확인<br>
+      구글 시트 <code>fileSlug</code> = 파일명 약자 (예: sbc, jmt, swfc)<br>
+      파일명 규칙: <code>sbc_0.jpg</code>, <code>sbc_1.jpg</code> ... 또는 <code>sbc_00.jpg</code>, <code>sbc_01.jpg</code>
+    </div>
+  </div>
+
+  <div id="cfgStatus" style="margin-bottom:20px;"></div>
+
+  <!-- Folder convention guide -->
+  <div class="sh" style="margin-top:8px;"><span class="sht">CLOUDINARY 폴더 구조 규칙</span></div>
+  <div style="background:var(--card);border-radius:9px;border:1px solid var(--brd);padding:18px 22px;font-size:11px;line-height:2;color:var(--dim);">
+    <div style="font-family:monospace;font-size:12px;color:var(--txt);">
+      facade-fieldtrip/<br>
+      &nbsp;&nbsp;└─ shanghai/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ <span style="color:var(--acc);">01_shanghai-tower</span>/&nbsp;&nbsp;&nbsp;← 건물ID_slug<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├─ facade_overview.jpg<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;├─ facade_detail_glass.jpg<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;└─ interior_atrium.jpg<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ <span style="color:var(--acc);">02_jin-mao-tower</span>/<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <span style="color:var(--acc);">40_1000-trees</span>/
+    </div>
+    <div style="margin-top:14px;font-size:10px;">구글 시트 <code style="color:var(--acc);">cloudinaryFolder</code> 컬럼에는 위 경로를 그대로 입력합니다.<br>예: <code style="color:var(--a2);">facade-fieldtrip/shanghai/01_shanghai-tower</code></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="mbg" id="mbg" onclick="if(event.target===this)closeMod()">
+  <div class="modal">
+    <div class="mh" id="mh">
+      <div class="mhg"></div>
+      <div class="mbdg" id="mbdg"></div>
+      <button class="mcls" onclick="closeMod()">✕</button>
+    </div>
+    <div class="mbody">
+      <div class="mk" id="mk"></div>
+      <div class="mtt" id="mtt"></div>
+      <div class="msub" id="msub"></div>
+      <div class="mtabs">
+        <button class="mtab on" onclick="mt(this,0)">OVERVIEW</button>
+        <button class="mtab" onclick="mt(this,1)">FACADE</button>
+        <button class="mtab" onclick="mt(this,2)">CONSULTANTS</button>
+        <button class="mtab" onclick="mt(this,3)">LOCATION</button>
+        <button class="mtab" onclick="mt(this,4)" id="galTab">GALLERY</button>
+      </div>
+      <div id="mp0" class="mpane on"></div>
+      <div id="mp1" class="mpane"></div>
+      <div id="mp2" class="mpane"></div>
+      <div id="mp3" class="mpane"></div>
+      <div id="mp4" class="mpane"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lbx" id="lbx">
+  <button class="lbx-cls" onclick="closeLbx()">✕</button>
+  <button class="lbx-prev" onclick="lbxNav(-1)">‹</button>
+  <div class="lbx-img-wrap">
+    <img class="lbx-blur" id="lbxBlur" src="" alt="">
+    <img class="lbx-img loading" id="lbxImg" src="" alt="">
+  </div>
+  <button class="lbx-next" onclick="lbxNav(1)">›</button>
+  <div class="lbx-info" id="lbxInfo"></div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════
+const SK_URL   = 'facade_sheety_url';
+const SK_CLOUD = 'facade_cloud_name';
+
+const DEFAULT_SHEETY_URL = '';
+const DEFAULT_CLOUD_NAME = 'da6wmcae7';
+
+const getCfg = () => ({
+  sheetyUrl: localStorage.getItem(SK_URL)   || DEFAULT_SHEETY_URL,
+  cloudName: localStorage.getItem(SK_CLOUD) || DEFAULT_CLOUD_NAME,
+});
+
+// ══════════════════════════════════════════════
+// CLOUDINARY URL HELPERS
+// ══════════════════════════════════════════════
+
+// ── Cloudinary URL 헬퍼
+// 규칙: 폴더 안 파일명 = 프로젝트slug_0, slug_1, slug_2 ...
+// 예: facade-fieldtrip/shanghai/01_shanghai-tower/shanghai-tower_0_abc123 (Public ID, 확장자 없음)
+
+// ── Cloudinary URL 헬퍼
+// thumbId  = Public ID (확장자 없음) — 카드 썸네일 + 모달 hero
+// galleryIds = Public ID 목록 (파이프 구분) — 갤러리 이미지
+
+const CLD_BASE = `https://res.cloudinary.com/da6wmcae7/image/upload`;
+
+// ── fileSlug 기반 URL 생성
+// Public ID = 파일명만 (폴더 경로 없음)
+// 예: sbc_0, sbc_1, sbc_00, sbc_01
+
+// 패딩 여부에 따른 번호 생성
+function padNum(n, pad) {
+  return pad ? String(n).padStart(2, '0') : String(n);
+}
+
+// fileSlug + 번호로 URL 생성
+function cldUrl(slug, n, pad, params) {
+  if (!slug) return '';
+  const file = `${slug}_${padNum(n, pad)}`;
+  return `${CLD_BASE}/${params}/${file}`;
+}
+
+// 카드 썸네일
+function cldThumb(slug, pad) {
+  return cldUrl(slug, 0, pad, 'w_780,h_380,c_fill,g_auto,q_auto:eco,f_auto');
+}
+
+// 모달 hero
+function cldHero(slug, pad) {
+  return cldUrl(slug, 0, pad, 'w_860,h_480,c_pad,b_black,q_auto:good,f_auto');
+}
+
+// 갤러리 썸네일
+function cldGalThumb(slug, n, pad) {
+  return cldUrl(slug, n, pad, 'w_400,h_300,c_pad,b_black,q_auto:low,f_auto');
+}
+
+// 라이트박스 풀
+function cldGalFull(slug, n, pad) {
+  return cldUrl(slug, n, pad, 'w_1200,h_1200,c_pad,b_black,q_auto:best,f_auto');
+}
+
+// 블러 플레이스홀더
+function cldGalBlur(slug, n, pad) {
+  return cldUrl(slug, n, pad, 'w_40,h_30,c_pad,b_black,q_10,f_auto');
+}
+
+// 패딩 캐시 (0 vs 00)
+const thumbPadCache = {};
+
+function probeThumbPad(slug) {
+  if (!slug) return Promise.resolve(false);
+  if (thumbPadCache[slug] !== undefined) return Promise.resolve(thumbPadCache[slug]);
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload  = () => { thumbPadCache[slug] = true;  resolve(true);  };
+    img.onerror = () => { thumbPadCache[slug] = false; resolve(false); };
+    img.src = cldUrl(slug, 0, true, 'w_40,h_30,q_10,f_auto'); // 00 먼저 시도
+  });
+}
+// 갤러리 썸네일
+
+
+// 라이트박스 풀
+
+
+// 블러 플레이스홀더
+
+
+// ══════════════════════════════════════════════
+// CLOUDINARY — 폴더 이미지 목록 조회
+// Cloudinary Search API (read-only, public 허용 시 사용 가능)
+// 단, 무료 플랜에서는 Search API 사용에 인증이 필요할 수 있음
+// → 대안: 시트에 images 컬럼으로 파일명 목록 저장
+// ══════════════════════════════════════════════
+
+// 갤러리 이미지 캐시 (API 호출 최소화)
+const galleryCache = {};
+
+
+// ══════════════════════════════════════════════
+// DATA STATE
+// ══════════════════════════════════════════════
+let BUILDINGS = [];
+let curFilter = 'all', curSearch = '';
+let dataLoaded = false;
+let currentBuildingId = null;
+
+// ══════════════════════════════════════════════
+// SHEETY TRANSFORM
+// ══════════════════════════════════════════════
+function transformRow(row) {
+  const tags    = (row.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+  const matTags = (row.matTags || row.mattags || '').split(',').map(t => t.trim()).filter(Boolean);
+  const materials = (row.materials || '').split('|').map(m => m.trim()).filter(Boolean);
+  const consultants = (row.consultants || '').split('|').map(c => {
+    const m = c.trim().match(/^(.+?)\s*\(([^)]+)\)\s*[—\-–]\s*(.+)$/);
+    return m ? { name: m[1].trim(), country: m[2].trim(), role: m[3].trim() } : { name: c.trim(), country:'', role:'' };
+  }).filter(c => c.name);
+
+  return {
+    id: Number(row.id),
+    name: row.name || '',
+    nameKo: row.nameKo || row.nameko || '',
+    architect: row.architect || '',
+    year: Number(row.year) || '',
+    type: (row.type || 'mixed').toLowerCase(),
+    district: row.district || '',
+    address: row.address || '',
+    coords: { lat: parseFloat(row.lat)||0, lng: parseFloat(row.lng)||0 },
+    gmap: row.gmapUrl || row.gmapurl || '',
+    bmap: row.bmapUrl || row.bmapurl || '',
+    website: row.website || '',
+    site: row.siteArea || row.sitearea || '',
+    gfa: row.gfa || '',
+    floors: Number(row.floors) || '',
+    height: row.height || '',
+    program: row.program || '',
+    fileSlug: row.fileSlug || row.fileslug || '',
+    tags, matTags,
+    facade: {
+      system: row.facadeSystem || row.facadesystem || '',
+      materials,
+      description: row.description || '',
+    },
+    consultants,
+  };
+}
+
+// ══════════════════════════════════════════════
+// FETCH
+// ══════════════════════════════════════════════
+async function fetchBuildings() {
+  const { sheetyUrl } = getCfg();
+  setStatus('loading', 'CONNECTING…');
+
+  if (!sheetyUrl) {
+    setStatus('error', 'NO URL');
+    document.getElementById('cgrid').innerHTML = noUrlHtml();
+    return;
+  }
+
+  try {
+    const res = await fetch(sheetyUrl);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const key = Object.keys(data).find(k => Array.isArray(data[k]));
+    if (!key) throw new Error('데이터 키를 찾을 수 없습니다');
+    BUILDINGS = data[key].map(transformRow).filter(b => b.id);
+    dataLoaded = true;
+    setStatus('live', `LIVE · ${BUILDINGS.length}`);
+    updateStats();
+    renderCards();
+    renderMap();
+    preloadCardImages();
+    updateCfgStatus(`✅ ${BUILDINGS.length}개 건물 로드 완료`, 'rgba(100,200,100,.1)', 'rgba(100,200,100,.3)');
+  } catch(err) {
+    setStatus('error', 'API ERROR');
+    document.getElementById('cgrid').innerHTML = `<div style="grid-column:1/-1"><div class="err-box"><div class="err-title">⚠ API 연결 오류</div><div class="err-msg">${err.message}</div><button class="err-btn" onclick="fetchBuildings()">재시도</button>&nbsp;<button class="err-btn" style="background:var(--card);color:var(--acc);border:1px solid var(--acc);" onclick="go('s')">SETTINGS</button></div></div>`;
+    updateCfgStatus(`❌ 연결 실패: ${err.message}`, 'rgba(200,80,80,.1)', 'rgba(200,80,80,.3)');
+  }
+}
+
+// ── preloadCardImages: slug_0 직접 URL 방식에서는 불필요 (카드 렌더 시 즉시 생성)
+function preloadCardImages() { /* no-op: URL은 cldThumb()으로 즉시 생성됨 */ }
+
+function noUrlHtml() {
+  return `<div style="grid-column:1/-1"><div class="err-box"><div class="err-title">⚙ Sheety URL 미설정</div><div class="err-msg">DATA 탭에서 Sheety URL과 Cloudinary Cloud Name을 설정해주세요.</div><button class="err-btn" onclick="go('s')">GO TO SETTINGS ↗</button></div></div>`;
+}
+
+function setStatus(state, text) {
+  const badge = document.getElementById('sheetyStatus');
+  const dot   = badge.querySelector('.sheety-dot');
+  badge.className = `sheety-badge ${state}`;
+  dot.className   = `sheety-dot${state==='loading'?' pulse':''}`;
+  document.getElementById('sheetyStatusText').textContent = text;
+}
+
+function updateStats() {
+  document.getElementById('statBuildings').textContent  = BUILDINGS.length;
+  document.getElementById('statArchitects').textContent = new Set(BUILDINGS.map(b=>b.architect)).size;
+  document.getElementById('statTypes').textContent      = new Set(BUILDINGS.map(b=>b.type)).size;
+}
+
+function updateCfgStatus(msg, bg, border) {
+  document.getElementById('cfgStatus').innerHTML =
+    `<div style="background:${bg};border:1px solid ${border};border-radius:8px;padding:12px 16px;font-size:11px;">${msg}</div>`;
+}
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+function go(id) {
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nt,.mnav').forEach(t=>t.classList.remove('on'));
+  const map={h:'ph',c:'pc',m:'pm',s:'ps'};
+  document.getElementById(map[id])?.classList.add('on');
+  const idx={h:0,c:1,m:2,s:3}[id];
+  document.querySelectorAll('.nt')[idx]?.classList.add('on');
+  document.querySelectorAll('.mnav')[idx]?.classList.add('on');
+  window.scrollTo(0,0);
+}
+
+// ══════════════════════════════════════════════
+// CARDS
+// ══════════════════════════════════════════════
+function renderCards() {
+  if (!dataLoaded) return;
+  const { cloudName } = getCfg();
+  const hasCloud = true; // Cloud Name은 CLD_BASE에 하드코딩됨
+
+  const filtered = BUILDINGS.filter(b => {
+    const typeOk   = curFilter==='all' || b.type===curFilter;
+    const q        = curSearch.toLowerCase();
+    const searchOk = !q || b.name.toLowerCase().includes(q) ||
+                     b.architect.toLowerCase().includes(q) ||
+                     b.district.toLowerCase().includes(q) ||
+                     b.tags.some(t=>t.toLowerCase().includes(q));
+    return typeOk && searchOk;
+  });
+
+  document.getElementById('ccount').textContent = `${filtered.length} buildings`;
+  document.getElementById('cgrid').innerHTML = filtered.map(b => {
+    // 썸네일 — fileSlug 기반
+    const thumbStyle = 'background-color:#000;';
+    const thumbImg   = b.fileSlug ? cldThumb(b.fileSlug, false) : '';
+    const imgCount   = '';
+
+    return `
+    <div class="cc" onclick="openMod(${b.id})">
+      <div class="ci" style="${thumbStyle}">
+        ${!thumbImg ? `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;"><div style="font-size:28px;">🏗️</div><div style="font-size:8px;letter-spacing:2px;color:var(--dim);">NO IMAGE YET</div></div>` : ''}
+        <div class="citag">${b.type.toUpperCase()}</div>
+        <div class="ciyr">${b.year}</div>
+        ${imgCount ? `<div class="ci-count show">${imgCount}</div>` : ''}
+      </div>
+      <div class="cb">
+        <div class="ca">${b.architect}</div>
+        <div class="cn">${b.name}</div>
+        <div class="cl">📍 ${b.district}</div>
+        <div class="ctags">
+          ${b.tags.slice(0,3).map(t=>`<span class="ct">${t}</span>`).join('')}
+          ${b.matTags.slice(0,2).map(t=>`<span class="ct m">${t}</span>`).join('')}
+        </div>
+        <div class="cmeta">
+          <div><div class="cmk">HEIGHT</div><div class="cmv">${b.height}</div></div>
+          <div><div class="cmk">FLOORS</div><div class="cmv">${b.floors}F</div></div>
+          <div><div class="cmk">GFA</div><div class="cmv">${b.gfa}</div></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // probe: 00 vs 0 패딩 결정 후 썸네일 업데이트
+  filtered.forEach(b => {
+    if (!b.fileSlug) return;
+    probeThumbPad(b.fileSlug).then(pad => {
+      const url = cldThumb(b.fileSlug, pad);
+      const card = document.querySelector(`.cc[onclick="openMod(${b.id})"] .ci`);
+      if (card) card.style.backgroundImage = `url('${url}')`;
+    });
+  });
+}
+
+function ft(el,type){document.querySelectorAll('.fbar .fc').forEach(e=>e.classList.remove('on'));el.classList.add('on');curFilter=type;renderCards();}
+function fs(v){curSearch=v;renderCards();}
+
+// ══════════════════════════════════════════════
+// MAP
+// ══════════════════════════════════════════════
+function renderMap() {
+  document.getElementById('mapSiteCount').textContent=`${BUILDINGS.length} SITES`;
+  document.getElementById('mapcount').textContent=`Shanghai — ${BUILDINGS.length} sites`;
+  document.getElementById('maplist').innerHTML=BUILDINGS.map((b,i)=>`
+    <div class="mpin" onclick="window.open('${b.gmap}','_blank')">
+      <div class="mpinn">${i+1}</div>
+      <div><div class="mpinn2">${b.name}</div><div class="mpinaddr">${b.district}</div></div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════════════
+function openMod(id) {
+  const b = BUILDINGS.find(x=>x.id===id);
+  if (!b) return;
+  currentBuildingId = id;
+
+  const { cloudName } = getCfg();
+  const hasCloud = true; // Cloud Name은 CLD_BASE에 하드코딩됨
+
+  // Hero image — 00/0 probe 후 설정
+  const mh = document.getElementById('mh');
+  if (b.fileSlug) {
+    mh.style.backgroundColor = '#000';
+    probeThumbPad(b.fileSlug).then(pad => {
+      mh.style.backgroundImage = `url('${cldHero(b.fileSlug, pad)}')`;
+    });
+  } else {
+    mh.style.backgroundImage = '';
+    mh.style.backgroundColor = '#000';
+  }
+
+  document.getElementById('mbdg').textContent = b.type.toUpperCase();
+  document.getElementById('mk').textContent   = b.architect + ' · ' + b.year;
+  document.getElementById('mtt').textContent  = b.name;
+  document.getElementById('msub').textContent = (b.nameKo||'') + ' · ' + b.district + ', Shanghai';
+
+  // OVERVIEW
+  document.getElementById('mp0').innerHTML=`
+    <div class="sg">
+      <div class="sp"><div class="spk">PROGRAM</div><div class="spv" style="font-size:11px;">${b.program}</div></div>
+      <div class="sp"><div class="spk">HEIGHT</div><div class="spv">${b.height}</div></div>
+      <div class="sp"><div class="spk">FLOORS</div><div class="spv">${b.floors}<small>F</small></div></div>
+      <div class="sp"><div class="spk">GFA</div><div class="spv" style="font-size:11px;">${b.gfa}</div></div>
+      <div class="sp"><div class="spk">SITE AREA</div><div class="spv" style="font-size:11px;">${b.site}</div></div>
+      <div class="sp"><div class="spk">COMPLETED</div><div class="spv">${b.year}</div></div>
+    </div>
+    ${b.website?`<div class="fst">PROJECT WEBSITE</div><div style="margin-bottom:16px;"><a class="mlink" href="${b.website}" target="_blank">🔗 VIEW PROJECT DETAILS ↗</a></div>`:''}
+    <div class="fst">ADDRESS</div><div class="fd">${b.address}</div>
+    ${b.facade.system?`<div class="fst">FACADE SYSTEM</div><div class="fd">${b.facade.system}</div>`:''}
+    ${b.facade.materials.length?`<div class="fst">MATERIALS</div><div class="fd">${b.facade.materials.join(' · ')}</div>`:''}`;
+
+  // FACADE
+  document.getElementById('mp1').innerHTML=`
+    ${b.facade.description?`<div class="fst">FACADE DESCRIPTION</div><div class="fd">${b.facade.description}</div>`:''}
+    ${b.facade.system?`<div class="fst">SYSTEM</div><div class="fd">${b.facade.system}</div>`:''}
+    ${b.facade.materials.length?`<div class="fst">MATERIALS</div><div class="fd">${b.facade.materials.join(' · ')}</div>`:''}
+    <div class="fst">TAGS</div>
+    <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;">
+      ${b.tags.map(t=>`<span class="ct">${t}</span>`).join('')}
+      ${b.matTags.map(t=>`<span class="ct m">${t}</span>`).join('')}
+    </div>`;
+
+  // CONSULTANTS
+  document.getElementById('mp2').innerHTML = b.consultants.length ? `
+    <div class="fst">PROJECT CONSULTANTS</div>
+    <div class="clist">${b.consultants.map(c=>`
+      <div class="citem"><div><div class="cin">${c.name}</div><div class="cic">${c.country}</div></div><div class="cir">${c.role}</div></div>`).join('')}
+    </div>` : '<div class="fd" style="margin-top:16px;">컨설턴트 정보 없음</div>';
+
+  // LOCATION
+  document.getElementById('mp3').innerHTML=`
+    <div class="fst">LOCATION</div>
+    <div class="fd">${b.address}<br><span style="color:var(--acc)">${b.coords.lat}° N, ${b.coords.lng}° E</span></div>
+    <div style="margin-bottom:14px;">
+      <a class="mlink" href="${b.gmap}" target="_blank">🌍 Google Maps ↗</a>
+      <a class="mlink" href="${b.bmap}" target="_blank">🇨🇳 百度地图 ↗</a>
+    </div>
+    <div class="mapbox">
+      <div style="font-size:32px;">📍</div>
+      <div style="font-size:11px;">${b.name}</div>
+      <div style="font-size:9px;color:var(--acc)">${b.coords.lat}° N · ${b.coords.lng}° E</div>
+    </div>`;
+
+  // GALLERY — 폴더 경로 저장, 탭 클릭 시 로드
+  document.getElementById('mp4').innerHTML = `<div class="gal-loading"><div class="gal-spinner"></div><div style="font-size:10px;letter-spacing:2px;">GALLERY 탭 클릭 시 이미지 로드</div></div>`;
+  document.getElementById('galTab').dataset.fileslug = b.fileSlug || '';
+  document.getElementById('galTab').dataset.loaded  = '0';
+  document.getElementById('galTab').dataset.bname   = b.name;
+
+  // Reset tabs
+  document.querySelectorAll('.mtab').forEach((t,i)=>t.classList.toggle('on',i===0));
+  document.querySelectorAll('.mpane').forEach((p,i)=>p.classList.toggle('on',i===0));
+  document.getElementById('mbg').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+
+function closeMod() {
+  document.getElementById('mbg').classList.remove('on');
+  document.body.style.overflow='';
+  currentBuildingId=null;
+}
+
+function mt(el,idx) {
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.mpane').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('mp'+idx).classList.add('on');
+  // Gallery tab — load on first click
+  if (idx===4 && el.dataset.loaded==='0') {
+    el.dataset.loaded='1';
+    loadGallery(el.dataset.fileslug, el.dataset.bname);
+  }
+}
+
+// ══════════════════════════════════════════════
+// GALLERY
+// ══════════════════════════════════════════════
+let lbxImages = [];
+let lbxIndex  = 0;
+
+function loadGallery(fileSlug, bname) {
+  const pane = document.getElementById('mp4');
+
+  if (!fileSlug) {
+    pane.innerHTML = `
+      <div class="gal-empty">
+        <div class="gal-empty-icon">📷</div>
+        <div style="font-size:11px;color:var(--dim);line-height:1.8;">
+          구글 시트 <code style="color:var(--acc)">fileSlug</code> 컬럼에<br>
+          파일명 약자를 입력해주세요. (예: sbc)
+        </div>
+      </div>`;
+    return;
+  }
+
+  // slug_0 ~ slug_N : Image() 객체로 존재 확인 → 있는 것만 갤러리에 추가
+  // 비동기로 순차 탐색 — 없으면 중단
+  pane.innerHTML = `<div class="gal-loading"><div class="gal-spinner"></div><div style="font-size:10px;letter-spacing:2px;color:var(--dim);">LOADING IMAGES…</div></div>`;
+
+  const MAX        = 50;   // 최대 탐색 번호
+  const MAX_MISS   = 3;    // 연속 실패 허용 횟수 (번호 빈 경우 대비)
+  const images = [];
+  let   idx      = 0;
+  let   pad      = null;
+  let   missCount = 0;     // 연속 실패 카운터
+
+  function probeNext() {
+    if (idx >= MAX) { renderGallery(); return; }
+    const n = idx;
+
+    if (pad === null) {
+      // 첫 이미지: 00 먼저 시도 → 실패하면 0 시도
+      const test00 = new Image();
+      test00.onload = () => { pad = true;  missCount = 0; pushAndContinue(n, true);  };
+      test00.onerror = () => {
+        const test0 = new Image();
+        test0.onload  = () => { pad = false; missCount = 0; pushAndContinue(n, false); };
+        test0.onerror = () => {
+          // 첫 이미지가 없으면 갤러리 없음
+          renderGallery();
+        };
+        test0.src = cldGalBlur(fileSlug, n, false);
+      };
+      test00.src = cldGalBlur(fileSlug, n, true);
+    } else {
+      const testImg = new Image();
+      testImg.onload = () => {
+        missCount = 0;
+        pushAndContinue(n, pad);
+      };
+      testImg.onerror = () => {
+        missCount++;
+        if (missCount >= MAX_MISS) {
+          // 연속 3개 실패 → 탐색 종료
+          renderGallery();
+        } else {
+          // 이 번호는 건너뛰고 다음 번호 시도
+          idx++;
+          probeNext();
+        }
+      };
+      testImg.src = cldGalBlur(fileSlug, n, pad);
+    }
+  }
+
+  function pushAndContinue(n, p) {
+    images.push({
+      n,
+      thumb: cldGalThumb(fileSlug, n, p),
+      full:  cldGalFull(fileSlug, n, p),
+      blur:  cldGalBlur(fileSlug, n, p),
+    });
+    idx++;
+    probeNext();
+  }
+
+  function renderGallery() {
+    lbxImages = images;
+
+    if (images.length === 0) {
+      pane.innerHTML = `
+        <div class="gal-empty">
+          <div class="gal-empty-icon">📷</div>
+          <div style="font-size:12px;font-weight:700;margin-bottom:8px;">${bname}</div>
+          <div style="font-size:11px;color:var(--dim);line-height:1.8;">
+            이미지가 없습니다.<br>
+            파일명 규칙: <code style="color:var(--acc)">${fileSlug}_0.jpg</code> 부터
+          </div>
+        </div>`;
+      return;
+    }
+
+    pane.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+        <div class="fst" style="margin:0;">PHOTOS · ${images.length}</div>
+        <div class="gal-folder">${fileSlug}</div>
+      </div>
+      <div class="gal-grid" id="galGrid"></div>`;
+
+    const grid = document.getElementById('galGrid');
+
+    images.forEach((img, i) => {
+      const el = document.createElement('div');
+      el.className = 'gal-item';
+      el.onclick   = () => openLbx(i);
+      el.innerHTML = `
+        <img class="blur-up" src="${img.blur}" alt="">
+        <div class="gal-overlay"><div class="gal-zoom">🔍</div></div>`;
+      grid.appendChild(el);
+
+      // 화면 진입 시 썸네일 교체
+      const obs = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        obs.disconnect();
+        const hi = new Image();
+        hi.onload = () => {
+          const blurImg = el.querySelector('img');
+          blurImg.src = img.thumb;
+          blurImg.classList.remove('blur-up');
+          blurImg.classList.add('loaded');
+        };
+        hi.src = img.thumb;
+      }, { rootMargin: '300px' });
+      obs.observe(el);
+    });
+  }
+
+  probeNext();
+}
+
+// ══════════════════════════════════════════════
+// LIGHTBOX
+// ══════════════════════════════════════════════
+function lbxShow(idx) {
+  const imgEl  = document.getElementById('lbxImg');
+  const blurEl = document.getElementById('lbxBlur');
+  const info   = document.getElementById('lbxInfo');
+  const cur    = lbxImages[idx];
+
+  // 블러 플레이스홀더 즉시 표시
+  blurEl.src = cur.blur;
+  blurEl.classList.remove('hide');
+  imgEl.classList.add('loading');
+  imgEl.src = '';
+  info.textContent = `${idx + 1} / ${lbxImages.length}`;
+
+  // 고해상도 로드
+  const full = new Image();
+  full.onload = () => {
+    imgEl.src = cur.full;
+    imgEl.classList.remove('loading');
+    blurEl.classList.add('hide');
+  };
+  full.onerror = () => {
+    imgEl.src = cur.thumb;
+    imgEl.classList.remove('loading');
+    blurEl.classList.add('hide');
+  };
+  full.src = cur.full;
+
+  // 인접 이미지 프리로드
+  [-1, 1].forEach(d => {
+    const ni = (idx + d + lbxImages.length) % lbxImages.length;
+    if (ni !== idx) new Image().src = lbxImages[ni].full;
+  });
+}
+
+function openLbx(idx) {
+  lbxIndex = idx;
+  document.getElementById('lbx').classList.add('on');
+  document.body.style.overflow = 'hidden';
+  lbxShow(idx);
+}
+
+function closeLbx() {
+  document.getElementById('lbx').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function lbxNav(dir) {
+  lbxIndex = (lbxIndex + dir + lbxImages.length) % lbxImages.length;
+  lbxShow(lbxIndex);
+}
+
+// 키보드
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lbx').classList.contains('on')) {
+    if (e.key === 'ArrowRight') lbxNav(1);
+    if (e.key === 'ArrowLeft')  lbxNav(-1);
+    if (e.key === 'Escape')     closeLbx();
+  } else if (document.getElementById('mbg').classList.contains('on') && e.key === 'Escape') {
+    closeMod();
+  }
+});
+
+// 터치 — 핀치 줌 + 스와이프 통합
+(function() {
+  const lbxEl = document.getElementById('lbx');
+  let sx = 0, sy = 0;
+  let scale = 1, lastScale = 1;
+  let tx = 0, ty = 0, lastTx = 0, lastTy = 0;
+  let isPinching = false;
+  let initDist = 0;
+
+  function getImg() { return document.getElementById('lbxImg'); }
+
+  function applyTransform() {
+    const img = getImg();
+    if (img) img.style.transform = `scale(${scale}) translate(${tx}px, ${ty}px)`;
+  }
+
+  function resetTransform() {
+    scale = 1; tx = 0; ty = 0; lastScale = 1; lastTx = 0; lastTy = 0;
+    const img = getImg();
+    if (img) img.style.transform = '';
+  }
+
+  function dist(t) {
+    const dx = t[0].clientX - t[1].clientX;
+    const dy = t[0].clientY - t[1].clientY;
+    return Math.hypot(dx, dy);
+  }
+
+  lbxEl.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      isPinching = true;
+      initDist = dist(e.touches);
+      lastScale = scale;
+      lastTx = tx; lastTy = ty;
+    } else if (e.touches.length === 1) {
+      isPinching = false;
+      sx = e.touches[0].clientX;
+      sy = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  lbxEl.addEventListener('touchmove', e => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const newDist = dist(e.touches);
+      scale = Math.min(Math.max(lastScale * (newDist / initDist), 1), 5);
+      applyTransform();
+    } else if (e.touches.length === 1 && scale > 1) {
+      // 확대된 상태에서 이미지 이동
+      e.preventDefault();
+      tx = lastTx + (e.touches[0].clientX - sx) / scale;
+      ty = lastTy + (e.touches[0].clientY - sy) / scale;
+      applyTransform();
+    }
+  }, { passive: false });
+
+  lbxEl.addEventListener('touchend', e => {
+    if (isPinching) {
+      lastScale = scale;
+      lastTx = tx; lastTy = ty;
+      isPinching = false;
+      return;
+    }
+    if (scale > 1) {
+      // 확대 상태 — 스와이프 무시
+      lastTx = tx; lastTy = ty;
+      return;
+    }
+    // 기본 크기일 때만 스와이프 동작
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      lbxNav(dx < 0 ? 1 : -1);
+    } else if (dy > 80 && Math.abs(dx) < 40) {
+      closeLbx();
+    }
+  }, { passive: true });
+
+  // 더블탭 — 확대/원복 토글
+  let lastTap = 0;
+  lbxEl.addEventListener('touchend', e => {
+    if (e.touches.length > 0) return;
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      if (scale > 1) {
+        resetTransform();
+      } else {
+        scale = 2.5;
+        applyTransform();
+      }
+    }
+    lastTap = now;
+  }, { passive: true });
+
+  // 이미지 바뀔 때 transform 초기화
+  const origLbxShow = lbxShow;
+  window._lbxShowWrapper = function(idx) {
+    resetTransform();
+    origLbxShow(idx);
+  };
+})();
+
+// ══════════════════════════════════════════════
+// CONFIG SAVE
+// ══════════════════════════════════════════════
+function saveConfig() {
+  const url   = document.getElementById('cfgUrl').value.trim();
+  const cloud = document.getElementById('cfgCloud').value.trim();
+  if (url)   localStorage.setItem(SK_URL,   url);
+  if (cloud) localStorage.setItem(SK_CLOUD, cloud);
+  galleryCache && Object.keys(galleryCache).forEach(k=>delete galleryCache[k]);
+  fetchBuildings();
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+(function init() {
+  const { sheetyUrl, cloudName } = getCfg();
+  if (sheetyUrl) document.getElementById('cfgUrl').value   = sheetyUrl;
+  if (cloudName) document.getElementById('cfgCloud').value = cloudName;
+  fetchBuildings();
+})();
+</script>
+</body>
+</html>
